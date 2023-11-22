@@ -5,6 +5,11 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiProyectoDePrueba", "MiProyectoDePrueba\MiProyectoDePrueba.csproj", "{9E637F1B-7DC2-4E22-B6E9-39819D798A34}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backups_database", "Backups_database", "{53EE65AB-96F3-4E60-B73F-0ACA8946B854}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\backups de bases de datos\backup_IntegradorAgenciaViajes.bak = ..\..\..\..\..\..\backups de bases de datos\backup_IntegradorAgenciaViajes.bak
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
