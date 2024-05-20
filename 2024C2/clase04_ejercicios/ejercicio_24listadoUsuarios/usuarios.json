@@ -1,0 +1,31 @@
+[
+    {
+        "nombre": "Floyd Mayweather",
+        "clave": "9999",
+        "email": "money@gmail.com",
+        "id": 1741,
+        "fecha_Registro": "2024-05-13"
+    },
+    {
+        "nombre": "Gervonta Davis",
+        "clave": "7777",
+        "email": "Tank@gmail.com",
+        "id": 9445,
+        "fecha_Registro": "2024-05-13"
+    },
+    {
+        "nombre": "Terence Crawford",
+        "clave": "6666",
+        "email": "Terence@gmail.com",
+        "id": 7614,
+        "fecha_Registro": "2024-05-13"
+    },
+    {
+        "nombre": "Errol Spence",
+        "clave": "5555",
+        "email": "Errol@gmail.com",
+        "id": 1788,
+        "fecha_Registro": "2024-05-13"
+    }
+]
+

@@ -1,0 +1,98 @@
+Te traes todo el archivo, por ejemplo la lista de autos que esta persistido en un file
+lo mejor cuando tengas que manipular esa lista, es leer el archivo pasartelo a un array
+hacer las modifciaciones que tengas que hacer en ese array y luego guardar ese array sobreescribiendo el file.
+porque hacer una budsqueda en un csv o txt es muy costoso, tenes que formatear etc.
+En ves de trabajar en csv, te la traes a php.
+Es una opcion buena, no es la unica. Pero es segura, respeta el formato, en cuanto a integridad del archivo, y mantiene la persistencia.
+
+
+
+
+while(!feof($archivo))
+        {
+            $linea = fgets($archivo);
+            $elementosDeLaLinea = explode(" - ", $linea);
+           
+            if(count($elementosDeLaLinea) == 4) 
+            {
+                $autoLeido = new Auto($elementosDeLaLinea[0], $elementosDeLaLinea[1], (float)$elementosDeLaLinea[2] , $elementosDeLaLinea[3]);
+                array_push($this->_autos, $autoLeido);
+                $i++;
+            }
+            
+        }
+
+
+while (($datos = fgetcsv($archivo)) !== false)
+
+dos maneras de resolver esto
+
+
+esta bien lo que hiciste de guardar la primer linea con la razon social del garage y el precio y luego que sea todo el array
+lo que estamos haciendo es anidar obj usuarios y temeos atributos de garage, esa es una manera valida de hacerlo
+json es la posta, desp lo vemos para esto
+
+HASTA ACA LAS DUDAS DE CLAS ANTERIOR.
+COMIENZA LA CLASE 4
+
+SUBIDA DE ARCHIVOS SESSION Y COOKIES
+
+
+la session dura hasta que cierra el navegador el usuario, luego se pierde esa informacion.
+la cookie es diferente, los tokens son diferentes de la clave alfanumerica que parece un hash
+
+la sesion es el identificador unico
+las cookies van a recibir valores a traves de post por ejemplo y tienen las preferencias del usuario. Estan inscriptas dentro de una sesion
+
+
+la cookie es mas segura porque se guarda en la pc dle usuario, en su navegador.
+cuando accedes a una pag, le envias la cokkie con tu info al servidor y no al reves.
+
+la sesion dura UNICAMENTE HAST QUE CERRAS EL SERVIDOR, ES EFIMERO. 
+APRENDES A desarrolar criterio para cuando usar una y cuando la otra, si queres que dure dias necesitas una cookie, si es algo muy breve un asesion.
+
+las cookies son la unica forma de decirle al cliente, guardame esto. 
+En su momento sirvieron mucho, hoy tambine, pero tiene algun inconveniente de seguridad. Hay standares para controlar esto, no guardamos info sensible.
+es info que los servidores nos OBLIGAN ha guardar en nuestro cliente -> LEA LA POLITICA DE COOKIES ETC SIEMPRE SALTA PORQUE HUIBO GRAN CONCIENTIZACION. SE PODIA
+GUARDAR CUALQUIER COSA Y EL USUARIO NI SE ENTERABA, HOY TMBN.
+
+
+LO DE FECHA DE REGISTRO AGREGUEMOSLO COMO ATRIBUTO DE CLASE USUARIO, NO LO ACLARA EN EL ENUNCIADO PERO EL PROFE DIJO QUE LO HAGAMOS
+
+
+IF PARAMETRO ES ACTINON   es lo primero
+IF(get action)
+
+switch methodo(verbo)
+        swittch get parametre  archivo, cookie retc
+else 
+x
+
+
+
+
+/* $trace = debug_backtrace();
+
+                // Iterar sobre cada elemento de la traza de la pila
+                foreach ($trace as $i => $call) 
+                {
+                    // Imprimir información sobre la llamada
+                    echo "Llamada $i:\n";
+                    echo "Archivo: {$call['file']}, línea {$call['line']}\n";
+                    echo "Función: {$call['function']}\n";
+                    echo "Args: " . json_encode($call['args']) . "\n\n";
+                }*/
+
+
+
+
+JSON  
+FORMATO DE FECHA Y-m-d 
+NO ACEPTA METODOS PRIVADOS, NI ENTIENDE LOS METODOS MAGICOS (__GET) no funciona,
+tenes que hacer metodos publicos convencionales para acceder a esos atributos o declararlos como publicos directamente.
+
+
+
+LOS PARAM DEL GET, O LOS FORMULARIOS(ACTION) DEL BODY DE LOS POST DDEBEMOS ENVIARLOS COMO HTML EN LOS GDB DE LOS EJ? Y EN EL PARCIAL?
+CUAL ES LA MANERA CORRECTA DE ESTRUCTURAR LA BIBLIOTECA DE CODIGO? ARCHIVOS DEBERIA SER UNA CLASE O ESTA BIEN QUE SEA UN ARCHIVO?
+NO CODEAMOS ESTRICTAMENTE CON POO ?

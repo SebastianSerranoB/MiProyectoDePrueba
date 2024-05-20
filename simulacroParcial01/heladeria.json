@@ -1,0 +1,10 @@
+[
+    {
+        "sabor": "Mascarpone",
+        "precio": "80",
+        "tipo": "crema",
+        "vaso": "cucurucho",
+        "stock": 180,
+        "id": 1
+    }
+]

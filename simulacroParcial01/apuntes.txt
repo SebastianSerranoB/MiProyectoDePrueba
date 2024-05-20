@@ -1,0 +1,140 @@
+Profe, 
+guardando la imagen con el sabor y tipo como identificación en la
+carpeta /ImagenesDeHelados/2024.
+
+lo de guardar la imagen lo entiendo, pero como guardo el tipo
+La idea es que el nombre de la imagen contenga el sabor y el tipo. 
+RESPUESTA: DESCARGATE UN PAR DE IMAGENES DE HELADOS 100KB MAX
+
+
+1-
+A- (1 pt.) index.php:Recibe todas las peticiones que realiza el postman, y administra a qué archivo se debe incluir.
+B- (1 pt.) HeladeriaAlta.php: (por POST) se ingresa Sabor, Precio, Tipo (“Agua” o “Crema”), Vaso (“Cucurucho”,
+“Plástico”), Stock (unidades).
+Se guardan los datos en en el archivo de texto heladeria.json, tomando un id autoincremental como
+identificador(emulado) .Sí el nombre y tipo ya existen , se actualiza el precio y se suma al stock existente.
+completar el alta con imagen del helado, guardando la imagen con el sabor y tipo como identificación en la
+carpeta /ImagenesDeHelados/2024.
+el nombre del helado es el sabor.
+*/
+
+index php tiene un case para ver si se llama a heladeria alta, a heladeria consulta o a alta venta
+cada uno es una consulta distinta que vos tenes en una carpeta del postman, una consula para el alta, otra para la mod otra para la venta y administra
+
+
+
+EL PDF ENUNCIADO CUANDO HABLA DE BASE DE DATOS VAMOS A USAR ARCHIVOS, 
+
+
+
+
+¿Esta bien tener un parametro hidden que identifique los distintos formularios que procesa post. 
+un parametro que indique si es AltaHelado o VentaHelado por ejemplo, y hacer un switch en base a eso ?
+SI, ESTO ESTA BIEN, ES LO QUE SE HIZO EN CLASE, TENER UN PARAMETRO QUE IDENTIFIQUE LOS FORMS. ELLOS LE PUSIERON ACTION A ESA VARIABKLE, YO FORM_TYPE
+
+¿Esta bien tener una clase Heladeria con una lista de Helados(que tambien es una clase) y  se encargue de manejar metodos estaticos para manejar archivos (csv json) y abm de helados?
+Lo encuentro mas prolijo pero quisas sea muy tedioso muy enroscado.
+SI, RECOMIENDAN QUE TODO ESTE EN POO , ES MAS PROLIJO Y SENCILLO.
+
+
+//estas son las variablesw ACCESO A DATOS (CHEQUEA EL DIAGRAMA MVC)
+en heladeriaAlta.php o consultaHelados.php aca manejamos todo lo que seria variables superglobales $_post[sabor] y todo eso, validamos con validadora 
+//el helado lo instancias en heladeriaAlta.php etc (estos son controllers)
+SI, EN ESE TIPO DE ARCHIVOS MANEJAMOS LAS SUPERGLOBALES , LAS VALIDACIONES Y LLAMAR A LAS FUNCIONES. aca va el isset superglobal is seet post[xxx] todo eso
+
+esta bien que agrupe las clases tipo heladeriaAlta.php en un archivo CONTROLADORES
+y las clases helados y heladerias en MODELOS. ?
+SI, ESTO ESTA PERFECTO Y NO TE PREOCUPES EN GDB POR COMO REPRESENTAR EL ANIDAMIENTO DE CARPETAS, SOLO PREOCUPARSE POR ENVIAR LOS ARCHIVOS
+
+NO HAY PROBLEMA CON EL TEMA DE QUE TENGAMOS CARPETAS , TIPO CONTROLADORES, MODELOS, ETC. VOS PASA TODOS LOS ARCHIVOS QUE TENGAS Y LOS PROFES SE ARRELGAN, NO TE ENROSQUES CON LAS RUTAS
+
+-SE DA POR SENTADO QUE UNA CLASE RECIBE PARAMETROS QUE VIENEN POR EL FRONT MINIMANETE SE VALIDAN QUE LLEGUEN, QUE SEAN DEL TIPO QUE CORRESPONDE, ETC.
+
+
+ME TRAIGO UNA CLASE ACCESO A DATOS PARECIDO A PDO, PARA manejar
+SE CAE DE MADURO QUE VAMOS A USAR ARCHIVOS, TODO LO QUE ES VALIDAR ARCHIVOS EN UN UNICO PUNTO Y DESPUES REUTILIZAR, TIPO UN HANDLER DE ARCHIVOS
+ej: en /controladores/.manejadorArchivos.php  ahi se realiza esta logica lecto/escritura con case por formato json o csv etc
+
+
+EN LA 2DA PARTE DE LA MATERIA ES ESTRICO EL MVC PERO AHORA NO, NO TE GASTES.
+//un switch, un lugar para procesar la info, y un lugar para guardarlas, listo, no mas estructura del proyecto y eso para que quede prolijo nomas.
+
+Tipo un handler de archivos general decias Franco?
+Franco Lippi
+10:18 p.m.
+si, eso mismo
+
+manejador generico de archivos y con eso centralizar todo lo que es la lectoescritra de los archuivos
+
+EN EL PARCIAL VAMOS A USAR json
+
+VOLVIENDO A LO DE LA CLASE ARCHIVOS
+EJ: manejadorArchivos, clase, funcion que recibe nombreDeArchivo o rutaDeArchivo como quieras y recibe el formato de archivo(.json .csv,etc)
+Los cases los haces dependiendo el formato, no el nombre, todos los json se leen/escriben igual porque vos llamas a la clase que se encarga, para el manejador de archivos es lo mismo, se desliga de eso, no es su responsabilidad de como establecer la manera que se guarda adentro el json de cada clase, eso se encarga la clase.
+lo unico que considerarias un siwtch con cases seria para el formato, pero lo mismo, los csv se leerian escribirian todos igual-
+
+EL PARCIAL NO ES DE AGREGARLE COSAS A ESTE SINO UNO NUEVO PERO CON LA MISMA LOGICA
+HACELO, REHACELO Y TRATA DE REHACERLO SOLO, SIN CHATGPT , SIN MIRAR CODIGO, ENTENDE TODO Y REPETI, 
+
+los form data del postman como los hice estan bien
+
+primero que funcione el codigho, desppues 
+
+
+
+las unicas validaciones ( en lo posible) que tengo en mis controladores, son para darles mensajes al usuario( ej:archivo cargado con exito), al front, que lo ideal seria tener una vista propiamente dicha
+pero aca la suplimos asi.
+
+CUESTION JSON Y ATRIBUTOS PRIVADOS, IMPLEMENTO SERIALIZEJSON QUE ES SENCILLO DE QUITAR DE ULTIMA. Hacemos la serializacio manualmente, es lo que permite esta interfaz, es decir, diseñamos el formato json a mano.
+
+
+
+
+2-
+(1pt.) HeladoConsultar.php: (por POST) Se ingresa Sabor y Tipo, si coincide con algún registro del archivo
+heladeria.json, retornar “existe”. De lo contrario informar si no existe el tipo o el nombre.
+3-
+a- (1 pts.) AltaVenta.php: (por POST) se recibe el email del usuario y el Sabor, Tipo y Stock, si el ítem existe en
+heladeria.json, y hay stock guardar en la base de datos( con la fecha, número de pedido y id autoincremental ) .
+Se debe descontar la cantidad vendida del stock.
+b- (1 pt) Completar el alta de la venta con imagen de la venta (ej:una imagen del usuario), guardando la imagen
+con el sabor+tipo+vaso+mail(solo usuario hasta el @) y fecha de la venta en la carpeta
+/ImagenesDeLaVenta/2024.
+
+ESTO LO HACEMOS MAS RAPIDO QUE CON ALTAHELADO YA QUE TENEMOS FACILITADAS MUCHAS COSAS
+TAMBIEN REFACTORIZAR HELADERIAALATA.PHP
+
+
+las fotos hay que meterle el .jpeg al final, es decir el fileextension
+
+errores en la venta, un -20 de stock entra. validador chequear. 
+Creee validaciones para esto. corroborar cambios.
+
+ahora toca:
+2da parte
+
+4- (1 pts.)ConsultasVentas.php: (por GET)
+Datos a consultar:
+a- La cantidad de Helados vendidos en un día en particular(se envía por parámetro), si no se pasa fecha, se
+muestran las del día de ayer.
+b- El listado de ventas de un usuario ingresado.
+c- El listado de ventas entre dos fechas ordenado por nombre.
+d- El listado de ventas por sabor ingresado.
+e- El listado de ventas por vaso Cucurucho.
+5- (1 pts.) ModificarVenta.php (por PUT)
+Debe recibir el número de pedido, el email del usuario, el nombre, tipo, vaso y cantidad, si existe se modifica , de
+lo contrario informar que no existe ese número de pedido.
+
+
+
+parse_str(file_get_contents("php://input"), $putData);
+
+Si utilizo esto en mi index.php para el case de PUT,  quiere decir que la informacion la envie a traves de x-ww-form?
+ChatGPT
+Sí, en efecto. Cuando utilizas parse_str(file_get_contents("php://input"), $putData); en tu script PHP para manejar una solicitud PUT, estás interpretando los datos del cuerpo de la solicitud como si estuvieran codificados en application/x-www-form-urlencoded.
+
+La función parse_str() analiza una cadena en pares de clave-valor y los asigna a variables en el ámbito actual (o los almacena en un array si se proporciona un segundo argumento, como $putData en tu caso). Esto es útil para convertir los datos del cuerpo de una solicitud PUT en un formato que PHP puede manejar más fácilmente, especialmente si los datos están codificados en application/x-www-form-urlencoded.
+
+Por lo tanto, al usar parse_str(file_get_contents("php://input"), $putData);, estás decodificando los datos del cuerpo de la solicitud PUT y almacenándolos en el array $putData para su posterior procesamiento. Esto te permite acceder a los datos como si fueran parte de $_POST, aunque en realidad provienen de una solicitud PUT.
+
+Es importante tener en cuenta que esto solo funciona si los datos se envían en el cuerpo de la solicitud PUT y están codificados en application/x-www-form-urlencoded. Si estás enviando datos de otra manera (como en formato JSON o XML), necesitarás procesar los datos de manera diferente.

@@ -1,0 +1,20 @@
+[
+    {
+        "sabor": "mascarpone",
+        "tipo": "crema",
+        "stock": "20",
+        "fechaVenta": "20-05-2024",
+        "emailUsuario": "fabian@gmail.com",
+        "numeroDePedido": -1,
+        "idHelado": 1
+    },
+    {
+        "sabor": "mascarpone",
+        "tipo": "crema",
+        "stock": "20",
+        "fechaVenta": "20-05-2024",
+        "emailUsuario": "fabian@gmail.com",
+        "numeroDePedido": 2,
+        "idHelado": 1
+    }
+]

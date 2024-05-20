@@ -1,0 +1,70 @@
+// Configuración de la conexión a la base de datos
+$dsn = 'mysql:host=localhost;dbname=nombre_de_la_base_de_datos';
+$usuario = 'usuario_de_mysql';
+$contraseña = 'contraseña_de_mysql';
+//Usuario: root@localhost usuario que me figura por defecto en phpmyadmin
+la contraseña por defecto esta desactivada.
+
+try {
+    // Crear una nueva instancia de PDO
+    $conexion = new PDO($dsn, $usuario, $contraseña);
+
+    // Configurar el modo de manejo de errores para que lance excepciones en caso de errores
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Aquí puedes realizar operaciones con la base de datos, como ejecutar consultas SQL
+    // Por ejemplo:
+    $consulta = $conexion->query("SELECT * FROM tabla");
+    
+    // Iterar sobre los resultados, por ejemplo:
+    while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
+        echo $fila['columna1'] . ' - ' . $fila['columna2'] . '<br>';
+    }
+
+} catch (PDOException $e) {
+    // En caso de error, capturar la excepción y manejarla adecuadamente
+    echo "Error de conexión: " . $e->getMessage();
+}
+
+
+$conStr = "mysql:host=localhost;dbname=pruebaDB";
+$pdo = new PDO($conStr, $user, $pass);
+
+
+o busque y encontree otra menera
+con el constructor
+peero no la implemente todavía del  todo, estuve probando
+$consulta->fetch(PDO::FETCH_PROPS_LATE);
+use esto
+
+el fetch object o va a clase especifica o instancia en una stdClass una standard stdClass
+fetch object utiliza cada una de las columnas que vienen en el select para asignarselas a atributos que sean publicos.
+el fetch class primer args es la clase, y como 2do args array de argumentos que tiene la clase en el ctor y este args es opcional. Son parecidos pero dependen para su uso0
+
+
+
+Nahuel Diego Rojas
+6:55 p.m.
+se puedee setear en $st->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'usuario');
+Nahuel Diego Rojas
+6:57 p.m.
+eentoncees el constructor lo volamos?
+eeeste ees otro eejeemplo
+function read($ID)
+{
+    $stmt = $this->pdo->prepare("SELECT * FROM customer WHERE ID = ?");
+    try {
+        $stmt->bindParam(1, $ID);
+        $stmt->execute();  
+    } 
+    catch(PDOException $e) {
+        echo $e;
+    }
+    $customer = new Klant(...pass your desired arguments...);
+    $stmt->setFetchMode(PDO::FETCH_INTO, $customer);
+    $stmt->fetch();
+    return $customer;
+}
+
+
+si, o lo volamos o lo ponemos por defecto. al ctor
